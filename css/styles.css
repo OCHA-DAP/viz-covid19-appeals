@@ -1151,13 +1151,22 @@ a:visited {
 
 h1 {
   font-family: 'Gotham-Bold';
-  font-size: 24px; }
+  font-size: 24px;
+  margin-bottom: 10px; }
 
 h3 {
   font-family: 'Gotham-Bold';
   font-size: 14px;
   line-height: 18px;
   margin: 0 0 5px; }
+
+.link {
+  display: inline-block; }
+  .link a {
+    text-decoration: none; }
+
+.standalone .link.external {
+  display: none; }
 
 .logos {
   margin-left: auto; }
@@ -1325,6 +1334,9 @@ table.dataTable > tbody > tr.child span.dtr-title {
     padding: 20px 0 10px; }
   h1 {
     font-size: 20px;
+    text-align: center; }
+  .link {
+    display: block;
     text-align: center; }
   #timeline {
     overflow: scroll;

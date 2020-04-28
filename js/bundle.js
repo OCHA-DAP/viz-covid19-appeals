@@ -112,9 +112,25 @@ $( document ).ready(function() {
     createTable();
     $('.filter-select').change(onFilterSelect);
       
+    //create page link
+    var embed = { text: 'See COVID-19 Appeals and Plans page', link: 'https://data.humdata.org/dataset/covid-19-global-appeals-and-plans' };
+    var standalone = { text: 'Open fullscreen', link: 'https://data.humdata.org/visualization/covid19-appeals/' };
+    if (window.location !== window.parent.location) {
+      createLink(standalone);
+    }
+    else {
+      $('body').addClass('standalone');
+      createLink(embed);
+    }
+
     //remove loader and show vis
     $('.loader').hide();
     $('main, footer').css('opacity', 1);
+  }
+
+  function createLink(type) {
+    $('.link').find('a').attr('href', type.link);
+    $('.link').find('span').html(type.text);
   }
 
   function onFilterSelect() {
