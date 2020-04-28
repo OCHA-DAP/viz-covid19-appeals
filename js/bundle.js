@@ -1,33 +1,5 @@
 //window.$ = window.jQuery = require('jquery');
 
-function hxlProxyToJSON(input){
-    var output = [];
-    var keys=[]
-    input.forEach(function(e,i){
-        if(i==0){
-            e.forEach(function(e2,i2){
-                var parts = e2.split('+');
-                var key = parts[0]
-                if(parts.length>1){
-                    var atts = parts.splice(1,parts.length);
-                    atts.sort();                    
-                    atts.forEach(function(att){
-                        key +='+'+att
-                    });
-                }
-                keys.push(key);
-            });
-        } else {
-            var row = {};
-            e.forEach(function(e2,i2){
-                row[keys[i2]] = e2;
-            });
-            output.push(row);
-        }
-    });
-    return output;
-}
-
 function propComparator(prop) {
     return function(a, b) {
         var comparison = 0;
@@ -59,7 +31,8 @@ function getEndDate(startDate, duration) {
 }
 
 function getNum(num) {
-    return d3.format('$.2s')(num).replace(/G/, 'B');
+    var n = (isNaN(num)) ? 0 : num;
+    return d3.format('$.2s')(n).replace(/G/, 'B');
 }
 $( document ).ready(function() {
   const DATA_URL = 'data/';
@@ -415,7 +388,7 @@ $( document ).ready(function() {
 
   function initTracking() {
     //initialize mixpanel
-    let MIXPANEL_TOKEN = '';
+    let MIXPANEL_TOKEN = window.location.hostname==='data.humdata.org'? '5cbf12bc9984628fb2c55a49daf32e74' : '99035923ee0a67880e6c05ab92b6cbc0';
     mixpanel.init(MIXPANEL_TOKEN);
     mixpanel.track('page view', {
       'page title': document.title,
@@ -424,5 +397,5 @@ $( document ).ready(function() {
   }
 
   getData();
-  //initTracking();
+  initTracking();
 });
