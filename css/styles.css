@@ -1165,9 +1165,6 @@ h3 {
   .link a {
     text-decoration: none; }
 
-.standalone .link.external {
-  display: none; }
-
 .logos {
   margin-left: auto; }
   .logos img {
