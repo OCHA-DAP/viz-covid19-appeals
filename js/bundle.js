@@ -129,8 +129,8 @@ $( document ).ready(function() {
   }
 
   function createLink(type) {
-    $('.link').find('a').attr('href', type.link);
-    $('.link').find('span').html(type.text);
+    $('.link.external').find('a').attr('href', type.link);
+    $('.link.external').find('span').html(type.text);
   }
 
   function onFilterSelect() {
